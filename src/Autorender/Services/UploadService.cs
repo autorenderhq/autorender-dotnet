@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Autorender.Core;
 using Autorender.Exceptions;
 using Autorender.Models.Uploads;
-using Autorender.Services.Uploads;
 
 namespace Autorender.Services;
 
@@ -33,13 +32,6 @@ public sealed class UploadService : IUploadService
         _client = client;
 
         _withRawResponse = new(() => new UploadServiceWithRawResponse(client.WithRawResponse));
-        _multipart = new(() => new MultipartService(client));
-    }
-
-    readonly Lazy<IMultipartService> _multipart;
-    public IMultipartService Multipart
-    {
-        get { return _multipart.Value; }
     }
 
     /// <inheritdoc/>
@@ -125,14 +117,6 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
     public UploadServiceWithRawResponse(IAutorenderClientWithRawResponse client)
     {
         _client = client;
-
-        _multipart = new(() => new MultipartServiceWithRawResponse(client));
-    }
-
-    readonly Lazy<IMultipartServiceWithRawResponse> _multipart;
-    public IMultipartServiceWithRawResponse Multipart
-    {
-        get { return _multipart.Value; }
     }
 
     /// <inheritdoc/>

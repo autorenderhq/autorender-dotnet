@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Autorender.Core;
 using Autorender.Models.Uploads;
-using Autorender.Services.Uploads;
 
 namespace Autorender.Services;
 
@@ -28,8 +27,6 @@ public interface IUploadService
     /// <para>The original service is not modified.</para>
     /// </summary>
     IUploadService WithOptions(Func<ClientOptions, ClientOptions> modifier);
-
-    IMultipartService Multipart { get; }
 
     /// <summary>
     /// Upload a file to your AutoRender workspace with optional transformations, tags,
@@ -91,8 +88,6 @@ public interface IUploadServiceWithRawResponse
     /// <para>The original service is not modified.</para>
     /// </summary>
     IUploadServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
-
-    IMultipartServiceWithRawResponse Multipart { get; }
 
     /// <summary>
     /// Returns a raw HTTP response for <c>post /api/v1/uploads</c>, but is otherwise the
