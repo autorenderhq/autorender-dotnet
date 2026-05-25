@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/autorenderhq/autorender-dotnet/compare/v0.1.0...v0.2.0) (2026-05-25)
+
+
+### Features
+
+* add stlc generate workflow and setup-stlc action ([2f63508](https://github.com/autorenderhq/autorender-dotnet/commit/2f635087c414c5ebc72f3a95807b88c12964255f))
+* add test CI job ([e7482d8](https://github.com/autorenderhq/autorender-dotnet/commit/e7482d854e6110f5470d0f55d4650fd51f825e36))
+
 ## 0.1.0 (2026-05-15)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/autorenderhq/autorender-dotnet/compare/v0.0.1...v0.1.0)
