@@ -52,6 +52,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b stlc/from-prod
           git merge production/main --no-edit -m "chore: sync release commits from production"
+          # Restore staging-only workflows stripped by the production overlay step
+          git checkout origin/main -- \
+            .github/workflows/stlc-promote.yml \
+            .github/workflows/stlc-sync-from-production.yml
+          git diff --cached --quiet || \
+            git commit -m "chore: restore staging-only workflows after back-sync"
           git remote set-url origin \
             "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           git push origin stlc/from-prod --force
